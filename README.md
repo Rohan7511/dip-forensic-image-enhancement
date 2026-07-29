@@ -1,21 +1,21 @@
-# 🔍 Digital Image Forensics
+# Digital Image Forensics
 
 **Enhancing CCTV Footage for Criminal Investigation using Image Processing Techniques**
 
 ---
 
-## 📌 About
+## About
 
 A Digital Image Processing case study that demonstrates how traditional image enhancement techniques can improve the quality of surveillance footage for forensic investigation. No Machine Learning or Deep Learning is used — only classical DIP methods.
 
-## 👥 Team
+## Team
 
 - SH Nihil Mukkesh
 - Nikhil Jones A
 - Rohan Gubba
 - Siddartha
 
-## 🛠️ Techniques Used
+## Techniques Used
 
 | Technique | Purpose |
 |---|---|
@@ -23,10 +23,10 @@ A Digital Image Processing case study that demonstrates how traditional image en
 | Average / Gaussian / Median Filters | Noise reduction |
 | Laplacian Sharpening | Edge enhancement |
 | Unsharp Masking | Detail recovery |
-| Bit-Plane Slicing | Structural analysis & steganography detection |
-| Sobel & Canny Edge Detection | Object boundary extraction |
+| Bit-Plane Slicing | Structural analysis and steganography detection |
+| Sobel and Canny Edge Detection | Object boundary extraction |
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 ├── 4.png                          # Input CCTV image
@@ -43,7 +43,7 @@ A Digital Image Processing case study that demonstrates how traditional image en
 └── README.md
 ```
 
-## 📦 Requirements
+## Requirements
 
 ```
 opencv-python
@@ -51,17 +51,17 @@ numpy
 matplotlib
 ```
 
-## ▶️ How to Run
+## How to Run
 
-1. Clone the repo
-2. Make sure `4.png` is in the root directory
-3. Open `Digital_Image_Forensics.ipynb` in Jupyter Notebook / VS Code
-4. Run all cells top to bottom
+1. Clone the repository.
+2. Ensure `4.png` is present in the root directory.
+3. Open `Digital_Image_Forensics.ipynb` in Jupyter Notebook or VS Code.
+4. Run all cells from top to bottom.
 
-## 📊 Dataset
+## Dataset
 
 The input image is sourced from the [Human Detection Dataset](https://www.kaggle.com/datasets/constantinwerner/human-detection-dataset) on Kaggle.
 
-## 📄 License
+## License
 
 This project is for academic purposes only.
