@@ -1,0 +1,6 @@
+train: C:\Users\Nihil\Downloads\1st Year\SEM 5\DIP\case_study\weapon-detection\data\splits\train.txt
+val: C:\Users\Nihil\Downloads\1st Year\SEM 5\DIP\case_study\weapon-detection\data\splits\val.txt
+nc: 2
+names:
+- Knife
+- Handgun

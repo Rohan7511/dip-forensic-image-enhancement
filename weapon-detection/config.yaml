@@ -1,0 +1,110 @@
+# config.yaml — central configuration for weapon-detection project
+# All paths are relative to the project root (weapon-detection/)
+
+# ──────────────────────────────────────────────
+# Paths
+# ──────────────────────────────────────────────
+paths:
+  data_raw:        "data/raw"
+  data_processed:  "data/processed"
+  splits_dir:      "data/splits"
+  yolov5_dir:      "yolov5"
+  weights_dir:     "weights"
+  results_dir:     "results"
+  eda_dir:         "results/eda"
+  errors_dir:      "results/errors"
+  feature_maps_dir: "results/feature_maps"
+  runs_dir:        "runs"
+
+# ──────────────────────────────────────────────
+# Dataset
+# ──────────────────────────────────────────────
+dataset:
+  # Class names in label order (0-indexed). Verified by running audit_split.py --inspect:
+  # class 0: 2268 boxes (Knife), class 1: 2383 boxes (Handgun)
+  # The Kaggle dataset.yaml names: {0: Knife, 1: Handgun}
+  class_names: ["Knife", "Handgun"]
+  num_classes: 2
+  image_extensions: [".jpg", ".jpeg", ".png", ".bmp", ".webp"]
+  img_size: 640
+
+# ──────────────────────────────────────────────
+# Split
+# ──────────────────────────────────────────────
+split:
+  seed: 42
+  val_fraction: 0.20
+
+# ──────────────────────────────────────────────
+# Deduplication
+# ──────────────────────────────────────────────
+dedup:
+  hash_size: 8          # phash grid size
+  hamming_threshold: 4  # max Hamming distance for near-duplicates
+
+# ──────────────────────────────────────────────
+# Training
+# ──────────────────────────────────────────────
+train:
+  weights: "yolov5s.pt"
+  img_size: 640
+  epochs: 100
+  patience: 20
+  batch_size: 16        # auto-adjusted by YOLOv5 for available memory
+  workers: 2            # keep low on Windows to avoid multiprocessing issues
+  seed: 42
+  project: "runs/train"
+  name: "yolov5s_baseline"
+
+# Smoke test (2 epochs on 100-image subset, imgsz 320)
+smoke_test:
+  epochs: 2
+  subset: 100
+  val_subset: 25
+  img_size: 320
+  name: "smoke_test"
+
+# ──────────────────────────────────────────────
+# Evaluation
+# ──────────────────────────────────────────────
+eval:
+  conf_threshold: 0.25
+  iou_threshold: 0.45
+  img_level_conf: 0.25   # confidence threshold for image-level verdict
+
+# ──────────────────────────────────────────────
+# Experiments
+# ──────────────────────────────────────────────
+experiments:
+  model_sizes: ["yolov5n", "yolov5s", "yolov5m"]
+  ablation_epochs: 30   # reduced for compute; note in report
+  clahe:
+    clip_limit: 2.0
+    tile_grid: [8, 8]
+  degradation:
+    gaussian_noise_std: 25
+    blur_ksize: 5
+    brightness_factor: 0.4
+
+# ──────────────────────────────────────────────
+# Architecture inspection
+# ──────────────────────────────────────────────
+inspect:
+  reported_conv_backbone: 33
+  reported_conv_neck: 24
+  reported_conv_head: 3
+  reported_conv_total: 60
+  expected_channel_widths: [32, 64, 128, 256, 512]
+  n_feature_map_images: 2
+  early_layers: [0, 1, 2]
+  mid_layers:   [8, 9, 10]
+  late_layers:  [17, 20, 23]
+
+# ──────────────────────────────────────────────
+# Gradio app
+# ──────────────────────────────────────────────
+app:
+  default_conf: 0.25
+  default_iou: 0.45
+  port: 7860
+  share: false

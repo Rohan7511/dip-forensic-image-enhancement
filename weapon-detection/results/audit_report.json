@@ -1,0 +1,14 @@
+{
+  "total_images": 4156,
+  "valid_images": 3491,
+  "duplicates_removed": 665,
+  "no_label": 0,
+  "bad_class_id": 0,
+  "bad_coords": 0,
+  "train": 2793,
+  "val": 698,
+  "class_names": [
+    "Knife",
+    "Handgun"
+  ]
+}
