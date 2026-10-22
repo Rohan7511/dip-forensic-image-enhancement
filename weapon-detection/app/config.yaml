@@ -1,0 +1,17 @@
+
+dataset:
+  class_names:
+    - Knife
+    - Handgun
+  img_size: 640
+
+eval:
+  conf_threshold: 0.25
+  iou_threshold: 0.45
+
+paths:
+  weights_dir: weights
+
+train:
+  project: runs/train
+  name: yolov5s_baseline
