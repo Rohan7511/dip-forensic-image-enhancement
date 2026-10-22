@@ -5,7 +5,7 @@ __pycache__/
 *.pt
 *.pth
 runs/
-yolov5/
+
 *.egg-info/
 .eggs/
 dist/
